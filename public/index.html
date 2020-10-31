@@ -12,8 +12,8 @@
 
   <body>
   <script>
+  async function getSomething(){
   if('geolocation' in navigator){
-    console.log('geolocation available');
     navigator.geolocation.getCurrentPosition(async position =>
     {
       const lat = position.coords.latitude;
@@ -21,7 +21,7 @@
       document.getElementById('latitude').textContent = lat;
       document.getElementById('longitude').textContent = lon;
 
-    const data = {lat, lon}; // this is what client going to sent
+    const data = {lat, lon}; // this is what client going to sent lat, lon
     const options = {
       method: 'POST',
       headers:{
@@ -29,13 +29,14 @@
       },
       body: JSON.stringify(data)
     };
-    const response = await fetch('https://syafiqexp.github.io/api',options);
+    const response = await fetch('/',options);
     const json = await response.json();
     console.log(json);
-  });
-  }else{
+   });
+ }else{
     console.log('geolocation not available');
   }
+}
   </script>
   <h1> Location: </h1>
   <br/>
@@ -43,7 +44,7 @@
     latitude: <span id="latitude"></span>&deg;<br/>
     longitude: <span id="longitude"></span>&deg;
   </p>
-
+  <input type="button" name="SUBMIT" value="SUBMIT" onclick ="getSomething();">
 
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
   </body>
