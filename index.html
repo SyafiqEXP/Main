@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" ng-controller="myCtrl">
+<head>
+  <title>Covid-19 Statistics</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="container">
+<div class= "row">
+
+<div class="container-fluid panel panel-default col-md-3 no-float" style="font-family:verdana;">
+<h4 style="font-family:georgia;text-align:center;">Control Panel</h4>
+<hr></hr>
+<status-directive></status-directive>
+<h6><span>{{historyTimeLine}}</span><span style="visibility: hidden;">_</span></h6>
+<hr></hr>
+<div style="font-family:verdana;">
+<result-directive></result-directive>
+</div>
+<hr></hr>
+
+<h4 style="font-family:georgia;text-align:center;">Select Country</h4>
+<div class="container-fluid" style="text-align:center;">
+<select class="form-select" ng-model="selectedCountry">
+<option ng-repeat="x in countryId" value="{{x}}">{{x}}</option>
+</select>
+<button ng-click="updateCountry()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+</div>
+<hr></hr>
+<h6><center>Release Version 1.0</center><h6>
+</div>
+
+<div class="container-fluid panel panel-default col-md-9" id="right" style="background-color:#000000;">
+<h4 class= "heading">Covid-19 Information Centre</h4>
+<div class="container-fluid panel panel-default col-md-12">
+<h6 class ="row" id="historyTag"><strong>Historical chart:</strong></h6>
+<canvas id="myChart3"></canvas>
+</div>
+<div class="container-fluid panel panel-default col-md-6">
+<canvas id="myChart1"></canvas>
+</div>
+<div class="container-fluid panel panel-default col-md-6">
+<canvas id="myChart2"></canvas>
+</div>
+</div>            
+
+</div> 
+</div>  
+<script src="controller.js"></script>
+</body>
+
+</html>
