@@ -195,13 +195,13 @@ app.controller("myCtrl", function($scope,$interval,$timeout) {
 					let temp = 0;
 					for(let i = 0;i < ($scope.numberOfDays - 1);i++)
 					{
-						temp = ctx.dataset.data[i]; // take 1st value
+						temp = ctx.dataset.data[i]; 
 						if(temp > max)
 							max = temp;
 					}
 					
 					//find highest value
-					if(value == max && max != 0)  // check if there is continuous string of zeroes
+					if(value == max && max != 0)  
 						value = "▲" + value;
 					else
 						value = '';
@@ -390,7 +390,7 @@ app.controller("myCtrl", function($scope,$interval,$timeout) {
 	  
 	  $scope.myChart1.update('active');
 	  $scope.myChart2.update('active');
-	  $scope.populationChart.update('active'); // population data
+	  $scope.populationChart.update('active'); 
 	  
 	  if((data.todayRecovered == 0 && data.critical == 0) && (data.todayDeaths == 0 && data.todayCases == 0))
 	  {
