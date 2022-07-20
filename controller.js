@@ -1,14 +1,13 @@
 let app = angular.module("myApp", []);
 app.controller("myCtrl", function($scope,$interval,$timeout) {
- //-----------------------------------------------------------------------
- $scope.selectedCountry = "Malaysia";  // by default
- $scope.numberOfDays = "30"; // by default
+ //------------DEFAULT SETUP--------------
+ $scope.selectedCountry = "Malaysia";
+ $scope.numberOfDays = "30";
  $scope.countryId = ["Afghanistan","Albania","Algeria","Andorra","Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bhutan","Bolivia","Botswana","Brazil","Brunei","Bulgaria","Burkina Faso","Cambodia","Cameroon","Cape Verde","Chad","Chile","China","Colombia","Congo","Costa Rica","Croatia","Cuba","Cyprus","Czech Republic","Denmark","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Estonia","Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia","Germany","Ghana","Greece","Grenada","Guatemala","Guinea","Guyana","Haiti","Honduras","Hungary","India","Indonesia","Iran","Iraq","Ireland","Italy","Jamaica","Japan","Jordan","Kazakhstan","Kenya","Kuwait","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Morocco","Mozambique","Namibia","Nepal","Netherlands","New Zealand","Nicaragua","Nigeria","Norway","Oman","Pakistan","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Qatar","Romania","Russia","Rwanda","Samoa","San Marino","Saudi Arabia","Senegal","Serbia","Seychelles","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Thailand","Togo","Turkey","Uganda","Ukraine","United Arab Emirates","United Kingdom","Uruguay","Uzbekistan","Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"];
  $scope.Days = ["30","182","365","730"];
- //------------GLOBAL--------------
+ //------------GLOBAL SCOPE--------------------
 
- 
- //------------GLOBAL--------------
+ //------------GLOBAL SCOPE--------------------
  let api_url = 'https://disease.sh/v3/covid-19/countries/'+$scope.selectedCountry+'?yesterday=true&strict&query%20'
  let api_url_history = 'https://disease.sh/v3/covid-19/historical/'+$scope.selectedCountry+'?lastdays='+$scope.numberOfDays
  //-----------------------------------------------------------------------
@@ -315,9 +314,8 @@ app.controller("myCtrl", function($scope,$interval,$timeout) {
   const response =  await fetch(api_url);
   const data = await response.json();
   
-  
   $timeout(function(){
-	  //-----------Start Init-------------
+	  //-----------Start Initialization-------------
 	  $scope.myChart1.clear();
 	  $scope.myChart2.clear();
 	  $scope.cases = 0;
@@ -351,7 +349,7 @@ app.controller("myCtrl", function($scope,$interval,$timeout) {
 	  $scope.myChart2.data.datasets[0].data[2] = 0;
 	  $scope.myChart1.update('active');
 	  $scope.myChart2.update('active');
-	  //-----------End Init-------------
+	  //-----------End Initialization-------------
     if (data.cases != null) {
 	  $scope.flag = data.countryInfo.flag;
 	  $scope.country = data.country;
@@ -423,7 +421,7 @@ app.controller("myCtrl", function($scope,$interval,$timeout) {
 		$historicalEndDateObject = new Date(Object.keys(data2.timeline.cases)[$scope.numberOfDays - 1]).toDateString().substring(3);
 		$scope.historyTimeLine = "Data from:" + $historicalStartDateObject + " " + "to" + " " +$historicalEndDateObject;
 		
-	  for(let i = 0;i <= ($scope.numberOfDays - 1);i++)   // test
+	  for(let i = 0;i <= ($scope.numberOfDays - 1);i++)   
 	  {
 		$scope.historical = "Available";
 		$scope.historicalStyle = {color: "green"};
